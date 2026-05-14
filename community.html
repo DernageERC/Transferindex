@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Norm App</title>
+  <meta name="description" content="Norm voter community app prototype." />
+  <meta name="theme-color" content="#050505" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Norm" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/assets/norm-penrose.svg" />
+  <link rel="stylesheet" href="community.css" />
+</head>
+<body>
+  <main class="phone-shell">
+    <section id="authScreen" class="screen auth-screen">
+      <div class="auth-brand">
+        <img src="assets/norm-penrose.svg" alt="Norm logo" />
+        <h1>Norm</h1>
+        <p>A voter community where participation becomes action.</p>
+      </div>
+
+      <form id="phoneForm" class="card auth-card">
+        <p class="eyebrow">Sign up or log in</p>
+        <label for="phone">Phone number</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" required />
+        <button type="submit">Continue</button>
+        <small>Prototype auth. SMS delivery comes with the backend.</small>
+      </form>
+
+      <form id="codeForm" class="card auth-card hidden">
+        <p class="eyebrow">Verification</p>
+        <label for="code">Enter verification code</label>
+        <input id="code" name="code" type="text" inputmode="numeric" maxlength="6" placeholder="6-digit code" required />
+        <button type="submit">Enter Norm</button>
+        <small id="codeHint">For this prototype, your code is ready.</small>
+      </form>
+    </section>
+
+    <section id="appScreen" class="screen app-screen hidden">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Norm community</p>
+          <h1 id="appTitle">Today</h1>
+        </div>
+        <div class="app-header-actions">
+          <a class="command-link" href="/control-center.html">Command Center</a>
+          <img src="assets/norm-penrose.svg" alt="Norm" />
+        </div>
+      </header>
+
+      <section class="quote-card card">
+        <p class="quote-label">Daily word</p>
+        <blockquote id="dailyQuote">“Let justice roll down like waters, and righteousness like an ever-flowing stream.”</blockquote>
+        <p class="quote-note">A small daily reminder before you vote, build, or pay attention.</p>
+      </section>
+
+      <section id="tabToday" class="tab-panel">
+        <article class="card action-card black-card">
+          <h2>Spend → Own</h2>
+          <p>Norm is building a community where everyday participation turns into progress people can see.</p>
+        </article>
+
+        <article class="card action-card">
+          <div class="section-heading">
+            <h2>What should we build next?</h2>
+            <span id="adminBadge" class="admin-badge hidden">Admin</span>
+          </div>
+          <p class="muted">Vote on the next app update. The ladder moves as the community votes.</p>
+          <div id="pollList" class="poll-list"></div>
+        </article>
+
+        <article id="adminPanel" class="card action-card hidden">
+          <h2>Admin poll builder</h2>
+          <p class="muted">Unlocked for your number. Add prototype poll options for the community.</p>
+          <form id="pollForm" class="inline-form">
+            <input id="pollInput" type="text" placeholder="Add a new app idea" />
+            <button type="submit">Add poll</button>
+          </form>
+        </article>
+
+        <article class="card action-card">
+          <h2>Progress ladder</h2>
+          <div class="ladder">
+            <div><strong>1</strong><span>Community polls</span></div>
+            <div><strong>2</strong><span>Profile customization</span></div>
+            <div><strong>3</strong><span>Bill tracker</span></div>
+            <div><strong>4</strong><span>Real notifications</span></div>
+            <div><strong>5</strong><span>Verified voter tools</span></div>
+          </div>
+        </article>
+
+        <article class="card action-card">
+          <h2>Notifications</h2>
+          <p class="muted">Turn on daily quote reminders on this device. Broadcast community push comes with the backend.</p>
+          <button id="notifyButton" class="secondary-button">Enable notifications</button>
+        </article>
+      </section>
+
+      <section id="tabProfile" class="tab-panel hidden">
+        <article class="card profile-card">
+          <h2>Profile</h2>
+          <p class="muted">Customize how you show up in the Norm community.</p>
+          <div class="avatar-wrap">
+            <img id="profilePhoto" src="assets/norm-penrose.svg" alt="Profile photo" />
+            <label class="photo-button" for="photoInput">Change photo</label>
+            <input id="photoInput" class="hidden" type="file" accept="image/*" />
+          </div>
+          <label for="displayName">Display name</label>
+          <input id="displayName" type="text" placeholder="Your name" />
+          <button id="saveProfileButton" type="button">Save profile</button>
+          <div class="profile-row"><span>Phone</span><strong id="profilePhone">—</strong></div>
+          <div class="profile-row"><span>Status</span><strong id="profileStatus">Early member</strong></div>
+          <div class="profile-row"><span>Community</span><strong>Norm</strong></div>
+          <button id="logoutButton" class="secondary-button">Log out</button>
+        </article>
+      </section>
+
+      <section id="tabVoter" class="tab-panel hidden">
+        <article class="card action-card">
+          <h2>Voter section</h2>
+          <p>Prototype hub for local action, civic reminders, community polls, and upcoming elections.</p>
+          <div class="prototype-list">
+            <span>Registration check</span>
+            <span>Local ballot guide</span>
+            <span>Representative tracker</span>
+            <span>Community issue board</span>
+          </div>
+        </article>
+        <article class="card action-card">
+          <h2>Community issue</h2>
+          <p class="muted">This week: What local issue should Norm help people understand first?</p>
+          <div class="prototype-list compact">
+            <span>Taxes and city spending</span>
+            <span>Schools and families</span>
+            <span>Housing and utilities</span>
+          </div>
+        </article>
+      </section>
+
+      <section id="tabBill" class="tab-panel hidden">
+        <article class="card action-card">
+          <h2>Bill</h2>
+          <p>Prototype view for a monthly Norm bill, payment status, and future participation allocation.</p>
+          <div class="bill-card">
+            <span>Norm Plan</span>
+            <strong>$39/mo</strong>
+            <small>No payment connected yet.</small>
+          </div>
+          <div class="allocation-card">
+            <div><span>Service</span><strong>$25</strong></div>
+            <div><span>Operations</span><strong>$7</strong></div>
+            <div><span>Participation</span><strong>$7</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <nav class="bottom-nav" aria-label="App sections">
+        <button class="nav-item active" data-tab="Today">Today</button>
+        <button class="nav-item" data-tab="Profile">Profile</button>
+        <button class="nav-item" data-tab="Voter">Voter</button>
+        <button class="nav-item" data-tab="Bill">Bill</button>
+      </nav>
+    </section>
+  </main>
+
+  <script src="community.js"></script>
+</body>
+</html>

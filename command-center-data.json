@@ -1,0 +1,124 @@
+{
+  "generatedAt": "2026-05-13T14:26:34.508514Z",
+  "systemStatus": {
+    "label": "Demo dashboard online",
+    "health": "ok",
+    "summary": "Public-safe Command Center preview. Live agent controls and private logs are intentionally not exposed.",
+    "workspace": "Private local workspace masked",
+    "app": "Norm Command Center"
+  },
+  "running": [
+    {
+      "name": "Norm Command Center",
+      "status": "running",
+      "detail": "Public web dashboard loaded from normnetwork.com/app.html"
+    },
+    {
+      "name": "Live agent connection",
+      "status": "warning",
+      "detail": "Not connected publicly yet. Add auth + a localhost/private backend before enabling real controls."
+    }
+  ],
+  "activity": [
+    {
+      "timestamp": "2026-05-13T14:26:34.508530Z",
+      "title": "Command Center packaged for Vercel",
+      "detail": "This deploy package is sanitized for public viewing."
+    },
+    {
+      "timestamp": "2026-05-13T14:26:34.508531Z",
+      "title": "Old prototype preserved",
+      "detail": "The previous Norm app prototype is available at /community.html."
+    }
+  ],
+  "logs": [
+    {
+      "timestamp": "2026-05-13T14:26:34.508532Z",
+      "category": "Success",
+      "source": "public-demo",
+      "message": "Dashboard is ready to deploy.",
+      "whatHappened": "The Command Center UI was prepared as the main /app.html experience.",
+      "whyItMatters": "You can open the dashboard from your phone once Vercel deploys it.",
+      "whatToDoNext": "Upload this folder or zip to Vercel."
+    },
+    {
+      "timestamp": "2026-05-13T14:26:34.508534Z",
+      "category": "Warning",
+      "source": "safety",
+      "message": "Real controls are disabled in the public version.",
+      "whatHappened": "Restart, diagnostics, logs, and notification tests are shown as copy/manual actions only.",
+      "whyItMatters": "Public sites should not expose private agent controls or secrets.",
+      "whatToDoNext": "Add authentication before connecting live controls."
+    }
+  ],
+  "commands": [
+    {
+      "name": "Restart agent",
+      "description": "Manual-only until authentication/private backend exists.",
+      "command": "Ask Norm to restart the gateway",
+      "riskLevel": "Medium",
+      "mode": "Manual approval"
+    },
+    {
+      "name": "Check system health",
+      "description": "Run locally on your machine, not from the public browser.",
+      "command": "openclaw status",
+      "riskLevel": "Low",
+      "mode": "Copy/run locally"
+    },
+    {
+      "name": "View latest logs",
+      "description": "Refresh private local dashboard data.",
+      "command": "python3 scripts/generate-command-center-data.py",
+      "riskLevel": "Low",
+      "mode": "Copy/run locally"
+    },
+    {
+      "name": "Check environment safely",
+      "description": "Shows only masked values in a private local snapshot.",
+      "command": "python3 scripts/generate-command-center-data.py",
+      "riskLevel": "Low",
+      "mode": "Masked"
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "Add login protection",
+      "why": "A real command center should not be publicly accessible without authentication.",
+      "installCommand": "Use Vercel password protection, Clerk, Auth.js, or a private VPN before enabling live controls.",
+      "riskLevel": "Medium",
+      "need": "Recommended next"
+    },
+    {
+      "name": "Private command API",
+      "why": "Real restart/log/diagnostic buttons need a secure backend with allowlisted commands only.",
+      "installCommand": "Build a localhost/private API; never expose secrets or shell access publicly.",
+      "riskLevel": "High",
+      "need": "Required for live controls"
+    },
+    {
+      "name": "Structured logs",
+      "why": "JSON logs make the plain-English summaries more reliable.",
+      "installCommand": "Adopt JSONL logs with level, timestamp, service, and message fields.",
+      "riskLevel": "Low",
+      "need": "Optional"
+    }
+  ],
+  "environment": [
+    {
+      "name": "PUBLIC_MODE",
+      "value": "true",
+      "masked": false
+    },
+    {
+      "name": "SECRETS",
+      "value": "[masked / not included]",
+      "masked": true
+    }
+  ],
+  "git": {
+    "available": false,
+    "summary": "Public deploy package; git metadata excluded",
+    "changedFiles": []
+  }
+}
